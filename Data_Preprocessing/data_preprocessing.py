@@ -55,4 +55,15 @@ Y = labelEncoderY.fit_transform(Y)
 # Create object
 oneHot = OneHotEncoder(categorical_features = [0])
 X = oneHot.fit_transform(X).toarray()
-print X
+# print X
+
+# Split dataset into training set and test set
+# Adapt new set and new situation
+# Library: 
+from sklearn.cross_validation import train_test_split
+# Good choice Test size is 0.2
+XTrain, XTest, YTrain, YTest = train_test_split(X, Y, test_size = 0.2, random_state = 0)
+#print XTrain
+#print XTest
+print YTrain
+print YTest
