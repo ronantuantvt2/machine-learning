@@ -32,4 +32,27 @@ imputer = Imputer(missingValues, strategy, axis)
 imputer = imputer.fit(X[:, 1:3])
 # Replace data by the mean of column
 X[:, 1:3] = imputer.transform(X[:, 1:3])
+# print X
+
+# Categorical variable
+# Library: LabelEncoder OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
+
+# Create label Object
+labelEncoderX = LabelEncoder()
+labelEncoderY = LabelEncoder()
+# transform data
+X[:, 0] = labelEncoderX.fit_transform(X[:,0])
+Y = labelEncoderY.fit_transform(Y)
+# print X
+# print Y
+
+# Create dummy data to prevent thinking which value is better than other
+# France Spain
+#   1      0
+#   0      1
+# Create object
+oneHot = OneHotEncoder(categorical_features = [0])
+X = oneHot.fit_transform(X).toarray()
 print X
